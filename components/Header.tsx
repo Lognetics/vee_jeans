@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ChevronDown, Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
+import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
 import { useCart } from './CartContext';
 import { STYLE_TILES } from '@/lib/products';
 import { CATEGORY_IMG } from '@/lib/images';
@@ -151,7 +151,6 @@ export default function Header() {
   const { totalItems, open, wishlist } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [activeMega, setActiveMega] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -173,7 +172,6 @@ export default function Header() {
   const closeAll = () => {
     setMobileOpen(false);
     setActiveMega(null);
-    setMobileExpanded(null);
   };
 
   return (
@@ -421,7 +419,6 @@ export default function Header() {
                   item.mega === 'collections' ||
                   item.mega === 'body' ||
                   item.mega === 'new';
-                const expanded = mobileExpanded === item.label;
 
                 if (!hasSubmenu) {
                   return (
@@ -436,71 +433,68 @@ export default function Header() {
                   );
                 }
 
+                // All submenus are always visible on mobile (no accordion).
                 return (
                   <div key={item.label} className="border-b border-cream-300">
-                    <button
-                      onClick={() => setMobileExpanded(expanded ? null : item.label)}
+                    <Link
+                      href={item.href}
+                      onClick={closeAll}
                       className="flex items-center justify-between w-full px-5 py-4 text-base font-medium hover:bg-cream-100"
                     >
                       {item.label}
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
-                      />
-                    </button>
-                    {expanded && (
-                      <div className="bg-cream-100 px-5 py-3 space-y-3">
-                        <Link
-                          href={item.href}
-                          onClick={closeAll}
-                          className="block text-sm font-medium text-clay-500 underline"
-                        >
-                          View all {item.label.toLowerCase()} →
-                        </Link>
-                        {item.mega === 'jeans' && (
-                          <MobileGroupSet groups={MEGA_JEANS} onSelect={closeAll} />
-                        )}
-                        {item.mega === 'tops' && (
-                          <MobileGroupSet groups={MEGA_TOPS} onSelect={closeAll} />
-                        )}
-                        {item.mega === 'collections' && (
-                          <MobileGroupSet groups={MEGA_COLLECTIONS} onSelect={closeAll} />
-                        )}
-                        {item.mega === 'body' && (
-                          <div className="grid grid-cols-3 gap-3">
-                            {MEGA_BODY.map((b) => (
-                              <Link
-                                key={b.label}
-                                href={b.href}
-                                onClick={closeAll}
-                                className="group"
-                              >
-                                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-cream-200">
-                                  <img src={b.image} alt={b.label} className="h-full w-full object-cover" />
-                                </div>
-                                <p className="mt-1.5 text-xs font-medium text-center">{b.label}</p>
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                        {item.mega === 'new' && (
-                          <div className="grid grid-cols-2 gap-3">
-                            {STYLE_TILES.slice(0, 4).map((s) => (
-                              <Link
-                                key={s.slug}
-                                href={`/shop?category=${s.slug}`}
-                                onClick={closeAll}
-                                className="group"
-                              >
-                                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-cream-200">
-                                  <img src={s.image} alt={s.name} className="h-full w-full object-cover" />
-                                </div>
-                                <p className="mt-1.5 text-xs font-medium">{s.name}</p>
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )}
+                    </Link>
+                    <div className="bg-cream-100 px-5 py-3 space-y-3">
+                      <Link
+                        href={item.href}
+                        onClick={closeAll}
+                        className="block text-sm font-medium text-clay-500 underline"
+                      >
+                        View all {item.label.toLowerCase()} →
+                      </Link>
+                      {item.mega === 'jeans' && (
+                        <MobileGroupSet groups={MEGA_JEANS} onSelect={closeAll} />
+                      )}
+                      {item.mega === 'tops' && (
+                        <MobileGroupSet groups={MEGA_TOPS} onSelect={closeAll} />
+                      )}
+                      {item.mega === 'collections' && (
+                        <MobileGroupSet groups={MEGA_COLLECTIONS} onSelect={closeAll} />
+                      )}
+                      {item.mega === 'body' && (
+                        <div className="grid grid-cols-3 gap-3">
+                          {MEGA_BODY.map((b) => (
+                            <Link
+                              key={b.label}
+                              href={b.href}
+                              onClick={closeAll}
+                              className="group"
+                            >
+                              <div className="aspect-[3/4] overflow-hidden rounded-lg bg-cream-200">
+                                <img src={b.image} alt={b.label} className="h-full w-full object-cover" />
+                              </div>
+                              <p className="mt-1.5 text-xs font-medium text-center">{b.label}</p>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                      {item.mega === 'new' && (
+                        <div className="grid grid-cols-2 gap-3">
+                          {STYLE_TILES.slice(0, 4).map((s) => (
+                            <Link
+                              key={s.slug}
+                              href={`/shop?category=${s.slug}`}
+                              onClick={closeAll}
+                              className="group"
+                            >
+                              <div className="aspect-[3/4] overflow-hidden rounded-lg bg-cream-200">
+                                <img src={s.image} alt={s.name} className="h-full w-full object-cover" />
+                              </div>
+                              <p className="mt-1.5 text-xs font-medium">{s.name}</p>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 );
               })}
