@@ -22,6 +22,7 @@ interface NavItem {
 }
 
 const NAV: NavItem[] = [
+  { label: 'Home', href: '/' },
   { label: 'New In', href: '/shop?collection=new-arrivals', mega: 'new' },
   { label: 'Jeans', href: '/shop', mega: 'jeans' },
   { label: 'Denim Tops', href: '/shop?category=denim-jacket', mega: 'tops' },
