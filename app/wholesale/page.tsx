@@ -53,7 +53,7 @@ export default function WholesalePage() {
       <section className="relative bg-denim-950 text-cream-50 overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img
-            src={IMG.editorial5}
+            src={IMG.editorial2}
             alt="Wholesale partner showcase"
             className="h-full w-full object-cover"
           />
