@@ -1,81 +1,73 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // CENTRAL IMAGE BANK
 //
-// Each image key points to a local file in `/public/products/` (the photos
-// you shared in chat). Until the local files exist, a temporary Unsplash
-// URL keeps the site working — so layout never breaks.
-//
-// To use your real photos:
-//   1. Save them into /public/products/ with the filenames in the README.
-//   2. That's it. Next.js serves them automatically.
+// Every key points to a real Vee_jeans product photo in `/public/catalog/`
+// (img-01.jpg … img-50.jpg). These are the only images used across the site.
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Quick switch — set to `true` to use Unsplash fallbacks while you drop
-// in your real photos. Set to `false` once your photos are in place.
-const USE_FALLBACK = false;
-
-const FB = (id: string, w = 1200) =>
-  `https://images.unsplash.com/${id}?w=${w}&q=85&auto=format&fit=crop`;
-
-const img = (filename: string, fallbackId: string) =>
-  USE_FALLBACK ? FB(fallbackId) : `/products/${filename}`;
+// Catalog photo by number — `/public/catalog/img-NN.jpg`
+export const C = (n: number) => `/catalog/img-${n.toString().padStart(2, '0')}.jpg`;
 
 // ─── The image bank ───
-// Each key references a local product photo. Variable names retain the
-// `womanDenim*` prefix for backwards compatibility with existing code.
-
+// Variable names keep the `womanDenim*` prefix for backwards compatibility.
+// These feed collection covers, body-type tiles, blog covers and reviews.
 export const IMG = {
-  // Stacks, flat-lays, hangers (great for editorial banners + category tiles)
-  womanDenim1:  img('stack-ck-blue.jpg',       'photo-1582418702059-97ebafb35d09'),
-  womanDenim2:  img('store-shelf.jpg',         'photo-1604176354204-9268737828e4'),
-  womanDenim3:  img('stool-stack.jpg',         'photo-1542406775-ade58c52d2e4'),
-  womanDenim4:  img('levis-flatlay-trio.jpg',  'photo-1604644401890-0bd678c83788'),
-  womanDenim5:  img('wooden-shelf-stacks.jpg', 'photo-1565084888279-aca607ecce0c'),
-  womanDenim6:  img('dark-folded-stack.jpg',   'photo-1576995853123-5a10305d93c0'),
-  womanDenim7:  img('flatlay-celine-book.jpg', 'photo-1594633312681-425c7b97ccd1'),
-  womanDenim8:  img('stool-h-and-m-stack.jpg', 'photo-1551803091-e20673f15770'),
-  womanDenim9:  img('hanger-trio-blue.jpg',    'photo-1473445730015-841f29a9490b'),
-  womanDenim10: img('vintage-crate-styled.jpg','photo-1438461875332-3b16ea93a936'),
+  womanDenim1:  C(5),   // straight-leg, on-model
+  womanDenim2:  C(30),  // wide-leg, on-model
+  womanDenim3:  C(43),  // wide-leg, on-model
+  womanDenim4:  C(40),  // wide-leg, on-model
+  womanDenim5:  C(27),  // maxi skirt, on-model
+  womanDenim6:  C(21),  // denim jumpsuit, on-model
+  womanDenim7:  C(46),  // denim jumpsuit, on-model
+  womanDenim8:  C(1),   // denim skirt, on-model
+  womanDenim9:  C(45),  // grey wide-leg, on-model
+  womanDenim10: C(48),  // wide-leg, on-model
+  womanDenim11: C(22),  // combat / cargo, on-model
+  womanDenim12: C(39),  // ripped jeans, on-model
+  womanDenim13: C(29),  // wrap mini skirt, on-model
+  womanDenim14: C(15),  // dungaree shorts, on-model
+  womanDenim15: C(36),  // denim shorts, on-model
+  womanDenim16: C(49),  // denim jumpsuit, on-model
+  womanDenim17: C(14),  // midi skirt, on-model
+  womanDenim18: C(19),  // wide-leg, plus size
+  womanDenim19: C(7),   // grey distressed wide-leg
+  womanDenim20: C(4),   // black wide-leg, on-model
 
-  // Model-worn shots (jeans on women, lower body / detail only)
-  womanDenim11: img('wide-leg-walk.jpg',       'photo-1591047139829-d91aecb6caea'),
-  womanDenim12: img('mirror-flare-tan.jpg',    'photo-1541099649105-f69ad21f3246'),
-  womanDenim13: img('wide-leg-light-side.jpg', 'photo-1584370848010-d7fe6bc767ec'),
-  womanDenim14: img('wide-leg-mid-front.jpg',  'photo-1610799073055-3793cdc97fd5'),
-  womanDenim15: img('denim-shorts-mid.jpg',    'photo-1593726891832-77e0ef98a1a8'),
-  womanDenim16: img('denim-jacket-roses.jpg',  'photo-1606744837616-56c9a5c6a6eb'),
-  womanDenim17: img('pencil-skirt-front.jpg',  'photo-1601333144130-8cbb312386b6'),
-  womanDenim18: img('cargo-shorts-blue.jpg',   'photo-1594938298603-c8148c4dae35'),
-  womanDenim19: img('tinted-baggy-side.jpg',   'photo-1542272604-787c3835535d'),
-  womanDenim20: img('black-wide-flat.jpg',     'photo-1582552938357-32b906df40cb'),
-
-  // Editorial banners (large hero crops)
-  editorial1: img('wooden-shelf-stacks.jpg',  'photo-1582418702059-97ebafb35d09'),
-  editorial2: img('chair-cascade.jpg',        'photo-1604176354204-9268737828e4'),
-  editorial3: img('brick-wall-hangers.jpg',   'photo-1565084888279-aca607ecce0c'),
-  editorial4: img('store-shelf.jpg',          'photo-1591047139829-d91aecb6caea'),
-  editorial5: img('outdoor-hanger-rack.jpg',  'photo-1542272604-787c3835535d'),
-  editorial6: img('stack-jean-tower.jpg',     'photo-1542406775-ade58c52d2e4'),
+  // Editorial banners (large hero crops) — boutique + on-model
+  editorial1: C(33),
+  editorial2: C(32),
+  editorial3: C(34),
+  editorial4: C(27),
+  editorial5: C(45),
+  editorial6: C(30),
 };
 
-// `thumb` kept for API compatibility — local SVG/JPG paths don't need it
+// `thumb` kept for API compatibility — local paths don't need resizing
 export const thumb = (url: string, w = 400) =>
   url.startsWith('http') ? url.replace(/w=\d+/, `w=${w}`) : url;
 
 // Category tile images — each tile shows a representative denim shot
 export const CATEGORY_IMG = {
-  momJeans:       IMG.womanDenim2,
-  baggyJeans:     IMG.womanDenim19,
-  palazzoJeans:   IMG.womanDenim11,
-  skinnyJeans:    IMG.womanDenim14,
-  wideLeg:        IMG.womanDenim20,
-  flare:          IMG.womanDenim12,
-  ripped:         IMG.womanDenim15,
-  cargo:          IMG.womanDenim18,
-  denimJacket:    IMG.womanDenim16,
-  denimSkirt:     IMG.womanDenim17,
-  denimShorts:    IMG.womanDenim18,
-  denimJumpsuit:  IMG.womanDenim6,
-  denimCorset:    IMG.womanDenim13,
-  denimGown:      IMG.womanDenim10,
+  momJeans:       C(5),
+  baggyJeans:     C(30),
+  palazzoJeans:   C(43),
+  barrelJeans:    C(3),
+  skinnyJeans:    C(17),
+  wideLeg:        C(40),
+  straightLeg:    C(10),
+  boyfriendJeans: C(11),
+  combatJeans:    C(22),
+  flare:          C(48),
+  ripped:         C(39),
+  cargo:          C(22),
+  denimJacket:    C(32),
+  denimSkirt:     C(1),
+  miniSkirt:      C(29),
+  midiSkirt:      C(14),
+  maxiSkirt:      C(27),
+  denimShorts:    C(36),
+  dungareeShorts: C(15),
+  denimJumpsuit:  C(46),
+  denimCorset:    C(29),
+  denimGown:      C(27),
 };

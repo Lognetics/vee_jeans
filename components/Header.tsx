@@ -36,14 +36,13 @@ const MEGA_JEANS: MegaGroup[] = [
   {
     title: 'By Style',
     links: [
-      { label: 'Mom Jeans', href: '/shop?category=mom-jeans' },
-      { label: 'Baggy Jeans', href: '/shop?category=baggy-jeans' },
-      { label: 'Palazzo Jeans', href: '/shop?category=palazzo-jeans' },
-      { label: 'Skinny Fit', href: '/shop?category=skinny-jeans' },
       { label: 'Wide Leg', href: '/shop?category=wide-leg-jeans' },
-      { label: 'Flare', href: '/shop?category=flare-jeans' },
-      { label: 'Ripped', href: '/shop?category=ripped-jeans' },
-      { label: 'Cargo', href: '/shop?category=cargo-jeans' },
+      { label: 'Barrel Jeans', href: '/shop?category=barrel-jeans' },
+      { label: 'Combat Jeans', href: '/shop?category=combat-jeans' },
+      { label: 'Straight Leg', href: '/shop?category=straight-leg-jeans' },
+      { label: 'Boyfriend Jeans', href: '/shop?category=boyfriend-jeans' },
+      { label: 'Skinny Jeans', href: '/shop?category=skinny-jeans' },
+      { label: 'Ripped Jeans', href: '/shop?category=ripped-jeans' },
     ],
   },
   {
@@ -86,26 +85,25 @@ const MEGA_JEANS: MegaGroup[] = [
 
 const MEGA_TOPS: MegaGroup[] = [
   {
-    title: 'Denim Tops',
+    title: 'Tops',
     links: [
-      { label: 'Denim Jackets', href: '/shop?category=denim-jacket' },
-      { label: 'Denim Shirts', href: '/shop?category=denim-jacket' },
-      { label: 'Denim Corsets', href: '/shop?category=denim-corset' },
+      { label: 'Rhinestone Jacket', href: '/shop?category=denim-jacket' },
+      { label: 'Denim Corset', href: '/shop?category=denim-corset' },
     ],
   },
   {
-    title: 'Bottoms',
+    title: 'Skirts & Shorts',
     links: [
-      { label: 'Denim Skirts', href: '/shop?category=denim-skirt' },
+      { label: 'Mini Skirt', href: '/shop?category=denim-skirt' },
+      { label: 'Midi & Maxi Skirts', href: '/shop?category=denim-skirt' },
       { label: 'Denim Shorts', href: '/shop?category=denim-shorts' },
     ],
   },
   {
     title: 'Full Pieces',
     links: [
-      { label: 'Jumpsuits', href: '/shop?category=denim-jumpsuit' },
-      { label: 'Denim Gowns', href: '/shop?category=denim-gown' },
-      { label: 'Two-Piece Sets', href: '/shop?collection=luxury' },
+      { label: 'Jumpsuit', href: '/shop?category=denim-jumpsuit' },
+      { label: 'Dungaree Shorts', href: '/shop?category=denim-shorts' },
     ],
   },
 ];

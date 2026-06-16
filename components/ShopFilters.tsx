@@ -32,20 +32,18 @@ export const DEFAULT_FILTERS: FilterState = {
 };
 
 const STYLES = [
-  ['mom-jeans', 'Mom Jeans'],
-  ['baggy-jeans', 'Baggy Jeans'],
-  ['palazzo-jeans', 'Palazzo Jeans'],
-  ['skinny-jeans', 'Skinny Jeans'],
   ['wide-leg-jeans', 'Wide Leg'],
-  ['flare-jeans', 'Flare'],
+  ['barrel-jeans', 'Barrel Jeans'],
+  ['combat-jeans', 'Combat Jeans'],
+  ['straight-leg-jeans', 'Straight Leg'],
+  ['boyfriend-jeans', 'Boyfriend Jeans'],
+  ['skinny-jeans', 'Skinny Jeans'],
   ['ripped-jeans', 'Ripped'],
-  ['cargo-jeans', 'Cargo'],
   ['denim-jacket', 'Denim Jacket'],
   ['denim-skirt', 'Denim Skirt'],
   ['denim-shorts', 'Shorts'],
   ['denim-jumpsuit', 'Jumpsuit'],
   ['denim-corset', 'Corset'],
-  ['denim-gown', 'Gown'],
 ] as const;
 
 const FITS = [
@@ -82,7 +80,7 @@ const BODY_TYPES = [
   ['rectangle', 'Rectangle'],
 ] as const;
 
-const SIZES = ['6', '8', '10', '12', '14', '16', '18', '20', '22', '24', 'XS', 'S', 'M', 'L', 'XL', 'XXL'];
+const SIZES = ['6', '7', '8', '9', '10', '12', '14', '16', '18', '20', '22', '24', '26', '27', '28', '29', '30', '32', '34', '36', 'XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 const WAIST_TYPES = [
   ['high', 'High Waist'],
