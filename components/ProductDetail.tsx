@@ -340,7 +340,7 @@ export default function ProductDetail({ product, related, reviews }: Props) {
                   label: 'Delivery & Returns',
                   content: (
                     <div className="text-sm text-ink-soft space-y-2">
-                      <p>📦 <strong className="text-denim-900">Lagos:</strong> Same-day or next-day delivery</p>
+                      <p>📦 <strong className="text-denim-900">Abuja:</strong> Same-day or next-day delivery</p>
                       <p>🇳🇬 <strong className="text-denim-900">Nationwide:</strong> 2–4 working days</p>
                       <p>🌍 <strong className="text-denim-900">International:</strong> 5–10 working days</p>
                       <p>↩️ 7-day return window. Item must be unworn with tags attached.</p>

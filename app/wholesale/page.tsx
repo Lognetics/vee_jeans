@@ -115,7 +115,7 @@ export default function WholesalePage() {
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { i: Award, t: 'Premium Turkish quality', d: 'Mill-sourced denim that holds up wash after wash. Your customers will notice.', href: '/shop?collection=premium-turkish' },
-            { i: Truck, t: 'Fast nationwide delivery', d: 'Dispatched within 48 hours. Same-day option in Lagos for urgent restocks.', href: '#apply' },
+            { i: Truck, t: 'Fast nationwide delivery', d: 'Dispatched within 48 hours. Same-day option in Abuja for urgent restocks.', href: '#apply' },
             { i: Users, t: 'Personal account manager', d: 'Direct WhatsApp line. Lookbooks. Restock alerts. Real support.', href: 'https://wa.me/2348100484650' },
             { i: CheckCircle2, t: 'Easy returns & swaps', d: 'Faulty piece? Swapped, no questions. We back our product.', href: '/contact' },
           ].map((b) => (

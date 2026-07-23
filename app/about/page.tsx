@@ -23,7 +23,7 @@ export default function AboutPage() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mt-4 leading-[0.95] max-w-4xl">
             Premium denim. <br />
             For every body. <br />
-            From Lagos to the world.
+            From Abuja to the world.
           </h1>
         </div>
       </section>
@@ -110,7 +110,7 @@ export default function AboutPage() {
           </div>
           <div className="relative max-w-3xl mx-auto">
             {[
-              { y: '2022', t: 'The beginning', d: 'Founded in Lagos with a single Turkish denim line and an Instagram store.' },
+              { y: '2022', t: 'The beginning', d: 'Founded in Abuja with a single Turkish denim line and an Instagram store.' },
               { y: '2023', t: 'Sizes 6–24', d: 'Launched our extended sizing range. Inclusivity became core to who we are.' },
               { y: '2024', t: 'Wholesale program', d: 'Opened our doors to boutiques and resellers. 100+ partners by year-end.' },
               { y: '2025', t: 'TikTok takeover', d: 'Our baggy and palazzo silhouettes went viral. Curvy collection launched.' },

@@ -7,7 +7,7 @@ import { useCart } from '@/components/CartContext';
 import { formatNaira } from '@/lib/format';
 
 const SHIPPING_OPTIONS = [
-  { id: 'lagos', name: 'Lagos Same-Day', price: 3500, eta: 'Today, by 9pm' },
+  { id: 'abuja', name: 'Abuja Same-Day', price: 3500, eta: 'Today, by 9pm' },
   { id: 'standard', name: 'Nationwide Standard', price: 4500, eta: '2–4 working days' },
   { id: 'express', name: 'Nationwide Express', price: 8500, eta: '1–2 working days' },
   { id: 'pickup', name: 'Pickup Station', price: 1500, eta: '1–3 working days' },
@@ -138,8 +138,7 @@ export default function CheckoutPage() {
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">State</span>
                 <select required className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm bg-white">
-                  <option>Lagos</option>
-                  <option>Abuja FCT</option>
+                  <option>Abuja</option>
                   <option>Rivers</option>
                   <option>Oyo</option>
                   <option>Kano</option>

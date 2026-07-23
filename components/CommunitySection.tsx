@@ -11,7 +11,7 @@ export default function CommunitySection() {
       <SectionHeader
         eyebrow="✦ The Vee_jeans Community"
         title="Faces of Vee_jeans."
-        subtitle="The women who wear, sell, and shape our denim — from Lagos to Abuja, Port Harcourt to Kano. Follow @Vee_jeans_backuppage and tag us to be featured."
+        subtitle="The women who wear, sell, and shape our denim — from Abuja to Port Harcourt, Kano to Ibadan. Follow @Vee_jeans_backuppage and tag us to be featured."
         cta={{ label: 'Follow on Instagram', href: 'https://instagram.com/vee_jeans_backuppage' }}
       />
 

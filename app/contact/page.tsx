@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin, MessageCircle, Instagram, CheckCircle2, ChevronDow
 const FAQS = [
   {
     q: 'How long does delivery take?',
-    a: 'Same-day or next-day in Lagos. 2–4 working days nationwide. 5–10 working days for international orders.',
+    a: 'Same-day or next-day in Abuja. 2–4 working days nationwide. 5–10 working days for international orders.',
   },
   {
     q: 'What sizes do you carry?',
@@ -114,7 +114,7 @@ export default function ContactPage() {
               <div>
                 <p className="text-[11px] tracking-[0.3em] uppercase text-clay-500 mb-2">Visit</p>
                 <p className="flex items-start gap-2 text-sm">
-                  <MapPin className="h-4 w-4 mt-0.5 text-ink-muted" /> Lagos, Nigeria — Visit our showroom by appointment.
+                  <MapPin className="h-4 w-4 mt-0.5 text-ink-muted" /> Abuja, Nigeria — Visit our showroom by appointment.
                 </p>
               </div>
               <div>

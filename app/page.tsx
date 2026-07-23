@@ -504,7 +504,7 @@ export default function HomePage() {
       <section className="container-luxe py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { i: Truck, t: 'Nationwide Delivery', d: 'Same-day in Lagos · 2–4 days elsewhere', href: '/contact' },
+            { i: Truck, t: 'Nationwide Delivery', d: 'Same-day in Abuja · 2–4 days elsewhere', href: '/contact' },
             { i: Shield, t: 'Secure Payments', d: 'Paystack · Flutterwave · Bank transfer', href: '/checkout' },
             { i: Award, t: 'Premium Turkish Denim', d: 'Mill-sourced quality, every piece', href: '/shop?collection=premium-turkish' },
             { i: Heart, t: 'Easy Returns', d: '7-day return window, no questions', href: '/contact' },

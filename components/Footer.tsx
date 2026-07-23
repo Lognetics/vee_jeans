@@ -52,7 +52,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4" /> hello@veejeans.ng
               </a>
               <p className="flex items-center gap-2 text-cream-200/80">
-                <MapPin className="h-4 w-4" /> Lagos, Nigeria
+                <MapPin className="h-4 w-4" /> Abuja, Nigeria
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-10 border-t border-denim-700">
           {[
             { t: 'Secure Payments', s: 'Paystack · Flutterwave · Card' },
-            { t: 'Nationwide Delivery', s: 'Same-day in Lagos' },
+            { t: 'Nationwide Delivery', s: 'Same-day in Abuja' },
             { t: 'Easy Returns', s: '7-day return window' },
             { t: 'Verified Reviews', s: '12,000+ happy customers' },
           ].map((x) => (

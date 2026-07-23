@@ -33,7 +33,7 @@ export const VEE_FACES: Face[] = [
   {
     name: 'Adaeze O.',
     handle: '@dazey_lifestyle',
-    location: 'Lagos',
+    location: 'Abuja',
     note: 'The high-waist mom jeans — I have them in every wash.',
     image: '/instagram/face-1.jpg',
     filename: 'face-1.jpg',
@@ -48,7 +48,7 @@ export const VEE_FACES: Face[] = [
   },
   {
     name: 'Ngozi K.',
-    handle: '@nk_couture_lagos',
+    handle: '@nk_couture_abuja',
     location: 'Surulere · Boutique partner',
     note: 'My customers ask for Vee_jeans by name now.',
     image: '/instagram/face-3.jpg',

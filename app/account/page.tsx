@@ -198,8 +198,8 @@ function AccountInner() {
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { label: 'Home', name: 'Adaeze O.', addr: '14 Admiralty Way, Lekki Phase 1, Lagos', primary: true },
-                  { label: 'Office', name: 'Adaeze O.', addr: 'Civic Towers, Ozumba Mbadiwe Avenue, V.I., Lagos' },
+                  { label: 'Home', name: 'Adaeze O.', addr: '14 Admiralty Way, Lekki Phase 1, Abuja', primary: true },
+                  { label: 'Office', name: 'Adaeze O.', addr: 'Civic Towers, Ozumba Mbadiwe Avenue, V.I., Abuja' },
                 ].map((a, i) => (
                   <div key={i} className="p-5 rounded-2xl border border-cream-300 bg-cream-50">
                     <div className="flex items-center justify-between">
