@@ -207,6 +207,15 @@ export default function CheckoutPage() {
                 </label>
               ))}
             </div>
+            {payment.id === 'bank' && (
+              <div className="mt-4 rounded-xl border border-denim-900 bg-denim-50 p-4 space-y-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Transfer to</p>
+                <p className="text-sm"><span className="text-ink-muted">Bank:</span> <span className="font-medium">First City Monument Bank (FCMB)</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Account Number:</span> <span className="font-semibold text-denim-900">8860460018</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Account Name:</span> <span className="font-medium">Veejeans Enterprises</span></p>
+                <p className="text-xs text-ink-muted pt-1">Use your full name as the transfer reference. Your order ships once payment is confirmed.</p>
+              </div>
+            )}
             <div className="mt-4 flex items-center gap-2 text-xs text-ink-muted">
               <ShieldCheck className="h-3.5 w-3.5" /> Your payment information is encrypted and never stored.
             </div>
