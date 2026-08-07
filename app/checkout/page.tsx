@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { CheckCircle2, CreditCard, Truck, MessageCircle, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import { useCart } from '@/components/CartContext';
 import { formatNaira } from '@/lib/format';
 
@@ -14,10 +14,7 @@ const SHIPPING_OPTIONS = [
 ];
 
 const PAYMENT_METHODS = [
-  { id: 'paystack', name: 'Paystack', desc: 'Card, USSD, bank transfer' },
-  { id: 'flutterwave', name: 'Flutterwave', desc: 'Card, mobile money, Apple Pay' },
-  { id: 'bank', name: 'Direct Bank Transfer', desc: 'Manual confirmation' },
-  { id: 'whatsapp', name: 'WhatsApp Checkout', desc: 'Pay via WhatsApp' },
+  { id: 'bank', name: 'Direct Bank Transfer', desc: 'Pay to our Flutterwave MFB account' },
 ];
 
 export default function CheckoutPage() {
@@ -202,17 +199,16 @@ export default function CheckoutPage() {
                       <p className="text-xs text-ink-muted">{m.desc}</p>
                     </div>
                   </div>
-                  {m.id === 'paystack' && <CreditCard className="h-4 w-4 text-ink-muted" />}
-                  {m.id === 'whatsapp' && <MessageCircle className="h-4 w-4 text-[#25D366]" />}
+                  {m.id === 'bank' && <CreditCard className="h-4 w-4 text-ink-muted" />}
                 </label>
               ))}
             </div>
             {payment.id === 'bank' && (
               <div className="mt-4 rounded-xl border border-denim-900 bg-denim-50 p-4 space-y-1.5">
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Transfer to</p>
-                <p className="text-sm"><span className="text-ink-muted">Bank:</span> <span className="font-medium">First City Monument Bank (FCMB)</span></p>
-                <p className="text-sm"><span className="text-ink-muted">Account Number:</span> <span className="font-semibold text-denim-900">8860460018</span></p>
-                <p className="text-sm"><span className="text-ink-muted">Account Name:</span> <span className="font-medium">Veejeans Enterprises</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Bank:</span> <span className="font-medium">Flutterwave MFB</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Account Number:</span> <span className="font-semibold text-denim-900">9909906765</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Account Name:</span> <span className="font-medium">Vee_jeans Enterprises Limited</span></p>
                 <p className="text-xs text-ink-muted pt-1">Use your full name as the transfer reference. Your order ships once payment is confirmed.</p>
               </div>
             )}

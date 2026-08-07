@@ -117,7 +117,7 @@ export default function Footer() {
         {/* Trust strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-10 border-t border-denim-700">
           {[
-            { t: 'Secure Payments', s: 'Paystack · Flutterwave · Card' },
+            { t: 'Secure Payments', s: 'Direct bank transfer' },
             { t: 'Nationwide Delivery', s: 'Same-day in Abuja' },
             { t: 'Easy Returns', s: '7-day return window' },
             { t: 'Verified Reviews', s: '12,000+ happy customers' },

@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: 'What payment methods do you accept?',
-    a: 'We accept all major cards, bank transfers, Paystack, Flutterwave, Apple Pay, and Google Pay. WhatsApp checkout also available.',
+    a: 'We accept direct bank transfer to our Flutterwave MFB account (Vee_jeans Enterprises Limited). Your order ships once payment is confirmed.',
   },
   {
     q: 'How do I become a wholesale partner?',
