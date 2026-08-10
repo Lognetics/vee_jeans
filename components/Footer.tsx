@@ -13,7 +13,7 @@ export default function Footer() {
               Be the first to wear it.
             </h3>
             <p className="mt-4 text-cream-200/80 max-w-md">
-              Subscribe for new drops, exclusive discounts, and styling inspiration straight to your inbox.
+              Subscribe for new drops and styling inspiration straight to your inbox.
             </p>
           </div>
           <form className="flex flex-col justify-center gap-3">

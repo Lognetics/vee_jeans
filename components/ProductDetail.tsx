@@ -16,7 +16,7 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import type { Product, Review } from '@/lib/types';
-import { calcDiscount, formatNaira } from '@/lib/format';
+import { formatNaira } from '@/lib/format';
 import { useCart } from './CartContext';
 import ProductCard from './ProductCard';
 
@@ -45,7 +45,6 @@ export default function ProductDetail({ product, related, reviews }: Props) {
     }
   };
 
-  const discount = calcDiscount(product.price, product.comparePrice);
   const isWishlisted = wishlist.includes(product.id);
 
   const onAdd = () => {
@@ -109,7 +108,6 @@ export default function ProductDetail({ product, related, reviews }: Props) {
                 />
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
                   {product.isNew && <span className="pill bg-clay-500 text-white border-clay-500">New</span>}
-                  {discount && <span className="pill bg-denim-900 text-cream-50 border-denim-900">-{discount}%</span>}
                   {product.isLimited && (
                     <span className="pill bg-cream-50 border-gold-500 text-gold-600">Limited Edition</span>
                   )}
@@ -166,27 +164,7 @@ export default function ProductDetail({ product, related, reviews }: Props) {
               <span className="font-display text-3xl text-denim-900">
                 {formatNaira(product.price)}
               </span>
-              {product.comparePrice && (
-                <span className="text-base line-through text-ink-muted">
-                  {formatNaira(product.comparePrice)}
-                </span>
-              )}
-              {discount && (
-                <span className="chip bg-clay-100 text-clay-700">You save {discount}%</span>
-              )}
             </div>
-
-            {product.isWholesaleEligible && product.wholesalePrice && (
-              <div className="mt-4 p-3 rounded-xl bg-denim-50 border border-denim-200 text-sm">
-                <p className="text-denim-900 font-medium">
-                  Wholesale: {formatNaira(product.wholesalePrice)} each
-                </p>
-                <p className="text-xs text-ink-muted mt-0.5">
-                  MOQ {product.minWholesaleQty} pieces ·{' '}
-                  <Link href="/wholesale" className="underline">Become a partner →</Link>
-                </p>
-              </div>
-            )}
 
             {/* Color picker */}
             <div className="mt-8">

@@ -3,7 +3,6 @@ import { ArrowRight, Sparkles, Truck, Shield, Award, Heart } from 'lucide-react'
 import Hero from '@/components/Hero';
 import SectionHeader from '@/components/SectionHeader';
 import ProductCard from '@/components/ProductCard';
-import CountdownTimer from '@/components/CountdownTimer';
 import CommunitySection from '@/components/CommunitySection';
 import {
   PRODUCTS,
@@ -18,7 +17,6 @@ import { IMG } from '@/lib/images';
 
 export default function HomePage() {
   const newArrivals = getProductsByCollection('new-arrivals', 8);
-  const trending = getProductsByCollection('trending', 4);
   const bestSellers = getProductsByCollection('best-sellers', 4);
   const turkishCollection = getProductsByCollection('premium-turkish', 6);
   const tiktokViral = getProductsByCollection('tiktok-viral', 4);
@@ -168,46 +166,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FLASH SALE */}
-      <section className="container-luxe py-20 md:py-28">
-        <div className="relative overflow-hidden rounded-3xl bg-denim-950 text-cream-50 p-8 md:p-14">
-          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-clay-500/30 blur-3xl" />
-          <div className="absolute -left-10 bottom-0 h-72 w-72 rounded-full bg-denim-700/40 blur-3xl" />
-          <div className="relative grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="text-[11px] tracking-[0.3em] uppercase text-clay-300">
-                ✦ Flash Sale — Members Only
-              </p>
-              <h2 className="font-display text-4xl md:text-6xl leading-[1.05] mt-4">
-                Up to 30% off select Turkish denim.
-              </h2>
-              <p className="mt-5 text-cream-200/85 max-w-lg">
-                Our biggest seasonal mark-down. Curvy fits, mom jeans, palazzos and more — while stocks last.
-              </p>
-              <div className="mt-8">
-                <CountdownTimer hours={36} />
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/shop" className="btn-accent">
-                  Shop the sale <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="/account" className="btn border border-cream-50/30 text-cream-50 hover:bg-cream-50 hover:text-denim-900">
-                  Become a member
-                </Link>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {trending.slice(0, 4).map((p) => (
-                <Link key={p.id} href={`/product/${p.slug}`} className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-denim-800">
-                  <img src={p.images[0]} alt={p.name} className="h-full w-full object-cover transition-transform group-hover:scale-110 duration-700" />
-                  <div className="absolute bottom-2 left-2 pill bg-clay-500 border-clay-500 text-white">-30%</div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* TRENDING / TIKTOK */}
       <section className="container-luxe py-12">
         <SectionHeader
@@ -336,7 +294,7 @@ export default function HomePage() {
             </p>
             <ul className="mt-8 space-y-3">
               {[
-                { t: 'Bulk pricing from 12 units', d: 'Up to 35% off retail per piece' },
+                { t: 'Volume pricing from 12 units', d: 'Special rates for stockists & resellers' },
                 { t: 'MOQ as low as 6 pieces', d: 'On select capsule items' },
                 { t: 'Dedicated WhatsApp account', d: 'Direct line to wholesale support' },
                 { t: 'Wholesale catalog download', d: 'Latest pricing & inventory PDFs' },

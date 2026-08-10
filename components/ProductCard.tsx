@@ -4,14 +4,13 @@ import Link from 'next/link';
 import { Heart, Eye, ShoppingBag } from 'lucide-react';
 import { useState } from 'react';
 import type { Product } from '@/lib/types';
-import { calcDiscount, formatNaira } from '@/lib/format';
+import { formatNaira } from '@/lib/format';
 import { useCart } from './CartContext';
 
 export default function ProductCard({ product }: { product: Product }) {
   const [hovered, setHovered] = useState(false);
   const [colorIdx, setColorIdx] = useState(0);
   const { addItem, wishlist, toggleWishlist } = useCart();
-  const discount = calcDiscount(product.price, product.comparePrice);
   const isWishlisted = wishlist.includes(product.id);
 
   // Primary image = the one matching the selected color (falls back to first image)
@@ -59,11 +58,6 @@ export default function ProductCard({ product }: { product: Product }) {
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
             {product.isNew && <span className="pill bg-clay-500/95 text-white border-clay-500">New</span>}
-            {discount && (
-              <span className="pill bg-denim-900/95 text-cream-50 border-denim-900">
-                -{discount}%
-              </span>
-            )}
             {product.isLimited && (
               <span className="pill bg-cream-50/95 border-gold-500 text-gold-600">Limited</span>
             )}
@@ -114,13 +108,6 @@ export default function ProductCard({ product }: { product: Product }) {
             </button>
           </div>
 
-          {/* Low stock pulse */}
-          {product.stock < 20 && (
-            <div className="absolute bottom-3 left-3 pill bg-cream-50/90 text-clay-600 animate-pulse-soft">
-              <span className="h-1.5 w-1.5 rounded-full bg-clay-500" />
-              Only {product.stock} left
-            </div>
-          )}
         </div>
       </Link>
 
@@ -135,9 +122,6 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-2 flex items-baseline gap-2">
           <span className="text-base font-semibold text-denim-900">{formatNaira(product.price)}</span>
-          {product.comparePrice && (
-            <span className="text-xs line-through text-ink-muted">{formatNaira(product.comparePrice)}</span>
-          )}
         </div>
 
         {/* Color swatches */}
