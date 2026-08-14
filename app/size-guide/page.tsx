@@ -5,16 +5,16 @@ import { Sparkles, Ruler, CheckCircle2 } from 'lucide-react';
 import { IMG } from '@/lib/images';
 
 const SIZE_CHART = [
-  { size: '6', waist: '24"', hip: '34"', inseam: '30"' },
-  { size: '8', waist: '25"', hip: '35"', inseam: '30"' },
-  { size: '10', waist: '26"', hip: '36"', inseam: '30"' },
-  { size: '12', waist: '27"', hip: '38"', inseam: '30"' },
-  { size: '14', waist: '29"', hip: '40"', inseam: '30"' },
-  { size: '16', waist: '31"', hip: '42"', inseam: '30"' },
-  { size: '18', waist: '33"', hip: '44"', inseam: '30"' },
-  { size: '20', waist: '35"', hip: '46"', inseam: '30"' },
-  { size: '22', waist: '37"', hip: '48"', inseam: '30"' },
-  { size: '24', waist: '39"', hip: '50"', inseam: '30"' },
+  { size: '4', waist: '26"', hip: '36"' },
+  { size: '6', waist: '28"', hip: '38"' },
+  { size: '8', waist: '30"', hip: '40"' },
+  { size: '10', waist: '32"', hip: '42"' },
+  { size: '12', waist: '34"', hip: '44"' },
+  { size: '14', waist: '36"', hip: '46"' },
+  { size: '16', waist: '38"', hip: '48"' },
+  { size: '18', waist: '40"', hip: '50"' },
+  { size: '20', waist: '42"', hip: '52"' },
+  { size: '22', waist: '44"', hip: '54"' },
 ];
 
 export default function SizeGuidePage() {
@@ -172,7 +172,6 @@ export default function SizeGuidePage() {
                   <th className="text-left px-6 py-4 font-medium">Size</th>
                   <th className="text-left px-6 py-4 font-medium">Waist</th>
                   <th className="text-left px-6 py-4 font-medium">Hip</th>
-                  <th className="text-left px-6 py-4 font-medium">Inseam</th>
                 </tr>
               </thead>
               <tbody>
@@ -181,7 +180,6 @@ export default function SizeGuidePage() {
                     <td className="px-6 py-4 font-medium text-denim-900">{s.size}</td>
                     <td className="px-6 py-4">{s.waist}</td>
                     <td className="px-6 py-4">{s.hip}</td>
-                    <td className="px-6 py-4">{s.inseam}</td>
                   </tr>
                 ))}
               </tbody>

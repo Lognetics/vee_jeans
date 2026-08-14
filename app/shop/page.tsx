@@ -120,7 +120,7 @@ function ShopInner() {
             {headerTitle}
           </h1>
           <p className="mt-3 text-ink-soft max-w-xl">
-            {filtered.length} pieces · Premium Turkish denim · Sizes 6 to 24
+            {filtered.length} styles · Premium Turkish denim · Sizes 4 to 22
           </p>
 
           {/* Collection tabs */}
