@@ -7,6 +7,7 @@ import { useCart } from '@/components/CartContext';
 import { formatNaira } from '@/lib/format';
 
 const SHIPPING_OPTIONS = [
+  { id: 'store-pickup', name: 'Store Pickup (Abuja)', price: 0, eta: 'Collect from our studio · ready in 24 hrs' },
   { id: 'guo-pickup', name: 'GUO Pickup (Nationwide Standard)', price: 5500, eta: '2–3 days · 0.1–1.0kg' },
   { id: 'guo-express', name: 'GUO Home Delivery / Express', price: 11000, eta: '2–3 days · delivery or pickup' },
 ];
@@ -19,7 +20,7 @@ const WHATSAPP_NUMBER = '2348100484650';
 
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
-  const [shipping, setShipping] = useState(SHIPPING_OPTIONS[0]);
+  const [shipping, setShipping] = useState(SHIPPING_OPTIONS[1]);
   const [payment, setPayment] = useState(PAYMENT_METHODS[0]);
   const [placed, setPlaced] = useState(false);
   const [showPay, setShowPay] = useState(false);
@@ -37,11 +38,11 @@ export default function CheckoutPage() {
             <CheckCircle2 className="h-10 w-10" />
           </div>
           <p className="text-[11px] tracking-[0.3em] uppercase text-clay-500 mt-8">Order #VJ-{Math.floor(Math.random() * 90000 + 10000)}</p>
-          <h1 className="font-display text-5xl text-denim-900 mt-3 leading-tight">
-            Thank you, gorgeous.
+          <h1 className="font-display text-4xl md:text-5xl text-denim-900 mt-3 leading-tight">
+            Your order will be confirmed shortly via chat.
           </h1>
           <p className="mt-5 text-ink-soft">
-            Your order is confirmed. We've sent details to your email and WhatsApp. We'll ping you again when it's dispatched.
+            We'll ping you when it's set for delivery.
           </p>
           <div className="mt-10 flex gap-3 justify-center">
             <Link href="/shop" className="btn-primary">Continue shopping</Link>
@@ -170,7 +171,7 @@ export default function CheckoutPage() {
                       <p className="text-xs text-ink-muted">{o.eta}</p>
                     </div>
                   </div>
-                  <p className="text-sm font-semibold">{formatNaira(o.price)}</p>
+                  <p className="text-sm font-semibold">{o.price === 0 ? 'Free' : formatNaira(o.price)}</p>
                 </label>
               ))}
             </div>
@@ -244,7 +245,7 @@ export default function CheckoutPage() {
 
             <div className="mt-5 pt-5 border-t border-cream-50/20 space-y-2 text-sm">
               <div className="flex justify-between"><span className="text-cream-200/80">Subtotal</span><span>{formatNaira(subtotal)}</span></div>
-              <div className="flex justify-between"><span className="text-cream-200/80">{shipping.name}</span><span>{formatNaira(shipping.price)}</span></div>
+              <div className="flex justify-between"><span className="text-cream-200/80">{shipping.name}</span><span>{shipping.price === 0 ? 'Free' : formatNaira(shipping.price)}</span></div>
             </div>
 
             <div className="mt-4 pt-4 border-t border-cream-50/20 flex justify-between text-lg font-semibold">
