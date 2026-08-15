@@ -76,9 +76,9 @@ export default function ContactPage() {
             {
               i: Mail,
               t: 'Email',
-              lines: ['hello@veejeans.ng', 'wholesale@veejeans.ng'],
+              lines: ['info@veejeans.com'],
               cta: 'Send a message',
-              href: 'mailto:hello@veejeans.ng',
+              href: 'mailto:info@veejeans.com',
             },
           ].map((c) => (
             <a

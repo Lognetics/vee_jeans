@@ -21,6 +21,8 @@ const display = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://veejeans.com'),
+  alternates: { canonical: '/' },
   title: 'Vee_jeans Enterprises Ltd — Premium Turkish Denim for Every Woman',
   description:
     'Luxury female denim fashion. Premium Turkish denim, inclusive sizing 6–24, nationwide delivery. Wholesale & retail. Made for confidence.',
@@ -37,6 +39,8 @@ export const metadata: Metadata = {
     title: 'Vee_jeans Enterprises Ltd',
     description: 'Premium Turkish denim for every woman.',
     type: 'website',
+    url: 'https://veejeans.com',
+    siteName: 'Vee_jeans Enterprises Ltd',
   },
 };
 

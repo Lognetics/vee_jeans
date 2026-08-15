@@ -48,8 +48,8 @@ export default function Footer() {
               <a href="tel:+2348100484650" className="flex items-center gap-2 text-cream-200/80 hover:text-clay-300">
                 <Phone className="h-4 w-4" /> +234 810 048 4650
               </a>
-              <a href="mailto:hello@veejeans.ng" className="flex items-center gap-2 text-cream-200/80 hover:text-clay-300">
-                <Mail className="h-4 w-4" /> hello@veejeans.ng
+              <a href="mailto:info@veejeans.com" className="flex items-center gap-2 text-cream-200/80 hover:text-clay-300">
+                <Mail className="h-4 w-4" /> info@veejeans.com
               </a>
               <p className="flex items-center gap-2 text-cream-200/80">
                 <MapPin className="h-4 w-4" /> Abuja, Nigeria
