@@ -2,28 +2,32 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { CheckCircle2, CreditCard, Truck, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, CreditCard, Truck, ShieldCheck, X, MessageCircle } from 'lucide-react';
 import { useCart } from '@/components/CartContext';
 import { formatNaira } from '@/lib/format';
 
 const SHIPPING_OPTIONS = [
-  { id: 'abuja', name: 'Abuja Same-Day', price: 3500, eta: 'Today, by 9pm' },
-  { id: 'standard', name: 'Nationwide Standard', price: 4500, eta: '2–4 working days' },
-  { id: 'express', name: 'Nationwide Express', price: 8500, eta: '1–2 working days' },
-  { id: 'pickup', name: 'Pickup Station', price: 1500, eta: '1–3 working days' },
+  { id: 'guo-pickup', name: 'GUO Pickup (Nationwide Standard)', price: 5500, eta: '2–3 days · 0.1–1.0kg' },
+  { id: 'guo-express', name: 'GUO Home Delivery / Express', price: 11000, eta: '2–3 days · delivery or pickup' },
 ];
 
 const PAYMENT_METHODS = [
   { id: 'bank', name: 'Direct Bank Transfer', desc: 'Pay to our Flutterwave MFB account' },
 ];
 
+const WHATSAPP_NUMBER = '2348100484650';
+
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
-  const [shipping, setShipping] = useState(SHIPPING_OPTIONS[1]);
+  const [shipping, setShipping] = useState(SHIPPING_OPTIONS[0]);
   const [payment, setPayment] = useState(PAYMENT_METHODS[0]);
   const [placed, setPlaced] = useState(false);
+  const [showPay, setShowPay] = useState(false);
 
   const total = subtotal + shipping.price;
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    `Hi Vee_jeans, I've placed an order (Total ${formatNaira(total)}). Here is my proof of payment to confirm my order.`
+  )}`;
 
   if (placed) {
     return (
@@ -40,8 +44,7 @@ export default function CheckoutPage() {
             Your order is confirmed. We've sent details to your email and WhatsApp. We'll ping you again when it's dispatched.
           </p>
           <div className="mt-10 flex gap-3 justify-center">
-            <Link href="/account" className="btn-primary">Track order</Link>
-            <Link href="/shop" className="btn-outline">Continue shopping</Link>
+            <Link href="/shop" className="btn-primary">Continue shopping</Link>
           </div>
         </div>
       </section>
@@ -69,8 +72,7 @@ export default function CheckoutPage() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setPlaced(true);
-          clear();
+          setShowPay(true);
         }}
         className="mt-10 grid lg:grid-cols-3 gap-10"
       >
@@ -80,7 +82,6 @@ export default function CheckoutPage() {
           <div className="rounded-2xl border border-cream-300 p-6 bg-cream-50">
             <div className="flex items-center justify-between mb-4">
               <p className="font-display text-xl text-denim-900">Contact</p>
-              <Link href="/account" className="text-xs text-ink-muted underline">Have an account? Sign in</Link>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <label className="block">
@@ -260,6 +261,67 @@ export default function CheckoutPage() {
           </div>
         </aside>
       </form>
+
+      {/* Pay & confirm modal */}
+      {showPay && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-denim-950/70 backdrop-blur-sm p-4"
+          onClick={() => setShowPay(false)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-2xl bg-cream-50 p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowPay(false)}
+              className="absolute top-4 right-4 grid place-items-center h-8 w-8 rounded-full bg-cream-200 text-ink hover:bg-cream-300"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            <p className="text-[11px] tracking-[0.3em] uppercase text-clay-500">Almost done</p>
+            <h2 className="font-display text-2xl text-denim-900 mt-2">Pay &amp; confirm your order</h2>
+            <p className="text-sm text-ink-soft mt-2">
+              Transfer the total below to our account, then send your proof of payment on WhatsApp to confirm your order.
+            </p>
+
+            <div className="mt-4 rounded-xl border border-denim-900 bg-denim-50 p-4 space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Amount to pay</span>
+                <span className="font-display text-xl text-denim-900">{formatNaira(total)}</span>
+              </div>
+              <div className="pt-1 border-t border-denim-200 mt-1 space-y-1">
+                <p className="text-sm"><span className="text-ink-muted">Bank:</span> <span className="font-medium">Flutterwave MFB</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Account Number:</span> <span className="font-semibold text-denim-900">9909906765</span></p>
+                <p className="text-sm"><span className="text-ink-muted">Account Name:</span> <span className="font-medium">Vee_jeans Enterprises Limited</span></p>
+              </div>
+            </div>
+
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe5b] transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" /> Send proof of payment via WhatsApp to confirm order
+            </a>
+
+            <button
+              type="button"
+              onClick={() => {
+                setPlaced(true);
+                clear();
+                setShowPay(false);
+              }}
+              className="mt-3 w-full text-center text-xs text-ink-muted underline"
+            >
+              I&apos;ve sent my proof of payment
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

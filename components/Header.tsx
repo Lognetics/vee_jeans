@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
+import { Heart, Menu, Search, ShoppingBag, X } from 'lucide-react';
 import { useCart } from './CartContext';
 import { STYLE_TILES } from '@/lib/products';
 import { CATEGORY_IMG } from '@/lib/images';
@@ -219,9 +219,6 @@ export default function Header() {
           <button aria-label="Search" className="p-2 hover:text-clay-500" onClick={() => setSearchOpen(true)}>
             <Search className="h-5 w-5" />
           </button>
-          <Link href="/account" aria-label="Account" className="p-2 hover:text-clay-500 hidden md:inline-flex">
-            <User className="h-5 w-5" />
-          </Link>
           <Link href="/account?tab=wishlist" aria-label="Wishlist" className="relative p-2 hover:text-clay-500">
             <Heart className="h-5 w-5" />
             {wishlist.length > 0 && (
@@ -498,9 +495,6 @@ export default function Header() {
                 );
               })}
 
-              <Link href="/account" onClick={closeAll} className="block px-5 py-4 border-b border-cream-300 text-base font-medium hover:bg-cream-100">
-                Account
-              </Link>
               <Link href="/size-guide" onClick={closeAll} className="block px-5 py-4 border-b border-cream-300 text-base font-medium hover:bg-cream-100">
                 Size Guide
               </Link>
