@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 
 const MESSAGES = [
+  '🔥 FLASH SALE — 50% OFF EVERYTHING · ends Sunday evening',
   '✦ Free nationwide delivery on orders over ₦80,000',
   '✦ Wholesale orders — 12+ pieces · WhatsApp +234 810 048 4650',
-  '✦ New Turkish denim drops every Friday',
   '✦ Sizes 6–24 in every fit — denim for every body',
 ];
 

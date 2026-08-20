@@ -107,6 +107,11 @@ export default function ProductDetail({ product, related, reviews }: Props) {
                   className="absolute inset-0 h-full w-full object-cover animate-fade-in"
                 />
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  {product.comparePrice && product.comparePrice > product.price && (
+                    <span className="pill bg-clay-600 text-white border-clay-600">
+                      -{Math.round((1 - product.price / product.comparePrice) * 100)}% Sale
+                    </span>
+                  )}
                   {product.isNew && <span className="pill bg-clay-500 text-white border-clay-500">New</span>}
                   {product.isLimited && (
                     <span className="pill bg-cream-50 border-gold-500 text-gold-600">Limited Edition</span>
@@ -161,9 +166,19 @@ export default function ProductDetail({ product, related, reviews }: Props) {
             </div>
 
             <div className="flex items-baseline gap-3 mt-6">
-              <span className="font-display text-3xl text-denim-900">
+              <span className="font-display text-3xl text-clay-600">
                 {formatNaira(product.price)}
               </span>
+              {product.comparePrice && product.comparePrice > product.price && (
+                <>
+                  <span className="text-lg line-through text-ink-muted">
+                    {formatNaira(product.comparePrice)}
+                  </span>
+                  <span className="chip bg-clay-100 text-clay-700">
+                    Save {Math.round((1 - product.price / product.comparePrice) * 100)}%
+                  </span>
+                </>
+              )}
             </div>
 
             {/* Color picker */}

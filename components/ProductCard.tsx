@@ -57,6 +57,11 @@ export default function ProductCard({ product }: { product: Product }) {
 
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+            {product.comparePrice && product.comparePrice > product.price && (
+              <span className="pill bg-clay-600 text-white border-clay-600">
+                -{Math.round((1 - product.price / product.comparePrice) * 100)}%
+              </span>
+            )}
             {product.isNew && <span className="pill bg-clay-500/95 text-white border-clay-500">New</span>}
             {product.isLimited && (
               <span className="pill bg-cream-50/95 border-gold-500 text-gold-600">Limited</span>
@@ -121,7 +126,10 @@ export default function ProductCard({ product }: { product: Product }) {
         </Link>
 
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-base font-semibold text-denim-900">{formatNaira(product.price)}</span>
+          <span className="text-base font-semibold text-clay-600">{formatNaira(product.price)}</span>
+          {product.comparePrice && product.comparePrice > product.price && (
+            <span className="text-xs line-through text-ink-muted">{formatNaira(product.comparePrice)}</span>
+          )}
         </div>
 
         {/* Color swatches */}
