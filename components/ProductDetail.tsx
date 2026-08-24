@@ -166,7 +166,7 @@ export default function ProductDetail({ product, related, reviews }: Props) {
             </div>
 
             <div className="flex items-baseline gap-3 mt-6">
-              <span className="font-display text-3xl text-clay-600">
+              <span className="font-display text-3xl text-denim-900">
                 {formatNaira(product.price)}
               </span>
               {product.comparePrice && product.comparePrice > product.price && (

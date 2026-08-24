@@ -126,7 +126,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </Link>
 
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-base font-semibold text-clay-600">{formatNaira(product.price)}</span>
+          <span className="text-base font-semibold text-denim-900">{formatNaira(product.price)}</span>
           {product.comparePrice && product.comparePrice > product.price && (
             <span className="text-xs line-through text-ink-muted">{formatNaira(product.comparePrice)}</span>
           )}
