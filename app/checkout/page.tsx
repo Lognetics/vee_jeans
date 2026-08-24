@@ -17,6 +17,20 @@ const PAYMENT_METHODS = [
 ];
 
 const WHATSAPP_NUMBER = '2348100484650';
+const NOTIFY_EMAIL = 'Okekevivian85@gmail.com';
+
+// Client-side email delivery via FormSubmit (no server / API key required).
+async function notify(subject: string, payload: Record<string, string>) {
+  try {
+    await fetch(`https://formsubmit.co/ajax/${NOTIFY_EMAIL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ _subject: subject, _template: 'table', _captcha: 'false', ...payload }),
+    });
+  } catch {
+    /* never block checkout on a mail failure */
+  }
+}
 
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
@@ -24,6 +38,7 @@ export default function CheckoutPage() {
   const [payment, setPayment] = useState(PAYMENT_METHODS[0]);
   const [placed, setPlaced] = useState(false);
   const [showPay, setShowPay] = useState(false);
+  const [order, setOrder] = useState<Record<string, string> | null>(null);
 
   const total = subtotal + shipping.price;
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -73,6 +88,30 @@ export default function CheckoutPage() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          const f = new FormData(e.currentTarget);
+          const g = (k: string) => (f.get(k) as string) || '';
+          const itemLines = items
+            .map((i) => `${i.name} (${i.color} / ${i.size}) x${i.quantity} — ${formatNaira(i.price * i.quantity)}`)
+            .join('\n');
+          const info: Record<string, string> = {
+            Name: `${g('firstName')} ${g('lastName')}`.trim(),
+            Email: g('email'),
+            WhatsApp: g('whatsapp'),
+            'Delivery / Pickup': shipping.name,
+            Address: [g('street'), g('apartment'), g('city'), g('state'), g('country')]
+              .filter(Boolean)
+              .join(', '),
+            Payment: payment.name,
+            Items: itemLines,
+            Subtotal: formatNaira(subtotal),
+            Shipping: shipping.price === 0 ? 'Free' : formatNaira(shipping.price),
+            'Order Total': formatNaira(total),
+          };
+          setOrder(info);
+          notify('🛒 New checkout started — Vee Jeans', {
+            Message: 'A client just filled the checkout form and clicked Place Order.',
+            ...info,
+          });
           setShowPay(true);
         }}
         className="mt-10 grid lg:grid-cols-3 gap-10"
@@ -87,11 +126,11 @@ export default function CheckoutPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">Email</span>
-                <input required type="email" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
+                <input required name="email" type="email" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">WhatsApp number</span>
-                <input required type="tel" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" placeholder="+234..." />
+                <input required name="whatsapp" type="tel" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" placeholder="+234..." />
               </label>
             </div>
             <label className="flex items-center gap-2 mt-4 text-sm">
@@ -106,7 +145,7 @@ export default function CheckoutPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <label className="block sm:col-span-2">
                 <span className="text-xs font-medium text-ink-soft">Country / Region</span>
-                <select className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm bg-white">
+                <select name="country" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm bg-white">
                   <option>Nigeria</option>
                   <option>Ghana</option>
                   <option>Kenya</option>
@@ -116,27 +155,27 @@ export default function CheckoutPage() {
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">First name</span>
-                <input required type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
+                <input required name="firstName" type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">Last name</span>
-                <input required type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
+                <input required name="lastName" type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
               </label>
               <label className="block sm:col-span-2">
                 <span className="text-xs font-medium text-ink-soft">Street address</span>
-                <input required type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
+                <input required name="street" type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
               </label>
               <label className="block sm:col-span-2">
                 <span className="text-xs font-medium text-ink-soft">Apartment / Suite (optional)</span>
-                <input type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
+                <input name="apartment" type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">City</span>
-                <input required type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
+                <input required name="city" type="text" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-ink-soft">State</span>
-                <select required className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm bg-white">
+                <select required name="state" className="mt-1 w-full rounded-lg border border-cream-300 px-4 py-3 text-sm bg-white">
                   <option>Abuja</option>
                   <option>Rivers</option>
                   <option>Oyo</option>
@@ -312,6 +351,15 @@ export default function CheckoutPage() {
             <button
               type="button"
               onClick={() => {
+                notify('💰 Payment claim — Vee Jeans order', {
+                  Message:
+                    `The client claims to have made a payment of ${formatNaira(total)} using the checkout ` +
+                    `information and the "${shipping.name}" delivery/pickup detail they selected. ` +
+                    `Kindly confirm on your bank app if you received this payment, and contact the client ` +
+                    `with the information they have provided.`,
+                  'Amount Paid (claimed)': formatNaira(total),
+                  ...(order ?? {}),
+                });
                 setPlaced(true);
                 clear();
                 setShowPay(false);
